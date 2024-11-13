@@ -8,5 +8,4 @@ module "compute" {
  vpc10_id = "${module.network.vpc10_id}"
  sn_vpc10_pub1a = "${module.network.sn_vpc10_pub1a}"
  sn_vpc10_pub1b = "${module.network.sn_vpc10_pub1b}"
- vpc10_cidr  = "${module.network.vpc10_cidr}"
 }

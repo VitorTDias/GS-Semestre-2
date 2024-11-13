@@ -1,7 +1,7 @@
 variable "vpc10_id" {}
 variable "sn_vpc10_pub1a" {}
 variable "sn_vpc10_pub1b" {}
-
+variable "vpc10_cidr" {}
 
 variable "ec2_ami" {
    type    = string

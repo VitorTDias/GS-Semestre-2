@@ -1,5 +1,5 @@
-module "rede" {
- source = "./modules/rede"
+module "network" {
+ source = "./modules/network"
 }
 
 module "compute" {

@@ -6,7 +6,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket         = "gs-semestre2-s3"
+    bucket         = "elbvitor"
     key            = "terraform.tfstate"
     dynamodb_table = "gs-semestre2-db"
     region         = "us-east-1"

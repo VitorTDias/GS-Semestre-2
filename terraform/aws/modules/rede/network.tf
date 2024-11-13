@@ -33,12 +33,12 @@ resource "aws_route_table" "rt_pub" {
 
 # RESOURCE: ROUTE TABLES ASSOCIATION TO SUBNETS
 resource "aws_route_table_association" "rt_pub_sn_pub_az1a" {
-  subnet_id      = aws_subnet.sn_pub_az1a.id
+  subnet_id      = aws_subnet.sn_vpc10_pub1a.id
   route_table_id = aws_route_table.rt_pub.id
 }
 
 resource "aws_route_table_association" "rt_pub_sn_pub_az1b" {
-  subnet_id      = aws_subnet.sn_pub_az1b.id
+  subnet_id      = aws_subnet.sn_vpc10_pub1b.id
   route_table_id = aws_route_table.rt_pub.id
 }
 

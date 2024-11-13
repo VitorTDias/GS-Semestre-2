@@ -6,9 +6,9 @@ terraform {
     }
   }
   backend "s3" {
-    bucket         = "GS_Semestre2_s3"
+    bucket         = "gs-semestre2-s3"
     key            = "terraform.tfstate"
-    dynamodb_table = "GS_Semestre2_db"
+    dynamodb_table = "gs-semestre2-db"
     region         = "us-east-1"
   }
 }

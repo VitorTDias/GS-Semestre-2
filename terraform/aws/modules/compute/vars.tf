@@ -1,6 +1,6 @@
-variable "vpc_id" {}
-variable "subnet_az1a_id" {}
-variable "subnet_az1b_id" {}
+variable "vpc10_id" {}
+variable "sn_vpc10_pub1a" {}
+variable "sn_vpc10_pub1b" {}
 
 
 variable "ec2_ami" {

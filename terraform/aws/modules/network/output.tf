@@ -1,11 +1,11 @@
-output "vpc_id" {
+output "vpc10_id" {
     value = "${aws_vpc.vpc10.id}"
 }
 
-output "subnet_az1a_id" {
+output "sn_vpc10_pub1a" {
     value = "${aws_subnet.sn_vpc10_pub1a.id}"
 }
 
-output "subnet_az1b_id" {
+output "sn_vpc10_pub1b" {
     value = "${aws_subnet.sn_vpc10_pub1b.id}"
 }

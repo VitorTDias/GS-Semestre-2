@@ -1,6 +1,6 @@
 # RESOURCE: SECURITY GROUP
 resource "aws_security_group" "vpc_sg_pub" {
-    vpc_id = var.vpc_id
+    vpc_id = var.vpc10_id
     egress {
         from_port   = "0"
         to_port     = "0"
@@ -53,7 +53,7 @@ resource "aws_security_group" "sg_elb" {
 resource "aws_lb" "ec2_lb" {
   name               = "ec2-elb"
   load_balancer_type = "application"
-  subnets            = [var.subnet_az1a_id, var.subnet_az1b_id]
+  subnets            = [var.sn_vpc10_pub1a, var.sn_vpc10_pub1b]
   security_groups    = [aws_security_group.sg_elb.id]
 }
 
@@ -83,7 +83,7 @@ data "template_file" "user_data" {
 resource "aws_instance" "instance-a" {
     ami                    = var.ec2_ami
     instance_type          = "t2.micro"
-    subnet_id              = var.subnet_az1a_id
+    subnet_id              = var.sn_vpc10_pub1a
     vpc_security_group_ids = [aws_security_group.vpc_sg_pub.id]
     user_data              = "${base64encode(data.template_file.user_data.rendered)}"
     key_name               = "vockey"
@@ -95,7 +95,7 @@ resource "aws_instance" "instance-a" {
 resource "aws_instance" "instance-b" {
     ami                    = var.ec2_ami
     instance_type          = "t2.micro"
-    subnet_id              = var.subnet_az1b_id
+    subnet_id              = var.sn_vpc10_pub1b
     vpc_security_group_ids = [aws_security_group.vpc_sg_pub.id]
     user_data              = "${base64encode(data.template_file.user_data.rendered)}"
     key_name               = "vockey"
@@ -107,7 +107,7 @@ resource "aws_instance" "instance-b" {
 resource "aws_instance" "instance-c" {
  	ami = var.ec2_ami
 	 instance_type = "t2.micro"
- 	subnet_id = var.subnet_az1a_id
+ 	subnet_id = var.sn_vpc10_pub1a
  	vpc_security_group_ids = [aws_security_group.vpc_sg_pub.id]
  	user_data = "${base64encode(data.template_file.user_data.rendered)}"
  	key_name = "vockey"
@@ -118,7 +118,7 @@ resource "aws_instance" "instance-c" {
 resource "aws_instance" "instance-d" {
  	ami = var.ec2_ami
  	instance_type = "t2.micro"
- 	subnet_id = var.subnet_az1b_id
+ 	subnet_id = var.sn_vpc10_pub1b
  	vpc_security_group_ids = [aws_security_group.vpc_sg_pub.id]
 	user_data = "${base64encode(data.template_file.user_data.rendered)}"
  	key_name = "vockey"

@@ -24,10 +24,10 @@ resource "aws_internet_gateway" "igw_vpc10" {
 
 # RESOURCE: ROUTE TABLES FOR THE SUBNETS
 resource "aws_route_table" "rt_pub" {
-    vpc_id = aws_vpc.vpc.id
+    vpc_id = aws_vpc.vpc10.id
     route {
         cidr_block = "0.0.0.0/0"
-        gateway_id = aws_internet_gateway.igw.id
+        gateway_id = aws_internet_gateway.igw_vpc10.id
     }
 }
 

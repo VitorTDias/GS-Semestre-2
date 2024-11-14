@@ -58,7 +58,7 @@ resource "aws_lb" "ec2_lb" {
 }
 
 resource "aws_lb_target_group" "lb_tg" {
-  name     = "lbtg"
+  name     = "lb_tg"
   protocol = "HTTP"
   port     = 80
   vpc_id   = var.vpc10_id

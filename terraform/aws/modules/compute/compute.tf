@@ -31,7 +31,7 @@ resource "aws_security_group" "vpc_sg_pub" {
 resource "aws_security_group" "sg_elb" {
   name        = "sg_elb"
   description = "sg_elb"
-  vpc_id      = var.vpc_id
+  vpc_id      = var.vpc10_id
 
   egress {
     from_port   = 0
@@ -61,7 +61,7 @@ resource "aws_lb_target_group" "lb_tg" {
   name     = "lbtg"
   protocol = "HTTP"
   port     = 80
-  vpc_id   = var.vpc_id
+  vpc_id   = var.vpc10_id
 }
 
 resource "aws_lb_listener" "ec2_lb_listener" {

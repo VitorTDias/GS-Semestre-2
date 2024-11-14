@@ -60,16 +60,30 @@ resource "azurerm_virtual_machine" "vm01_public" {
         version   = "latest"
     }
     storage_os_disk {
-        name              = "vm01-os-disk-public"
-        caching           = "ReadWrite"
+        name              = "vm02-os-disk-public"
         create_option     = "FromImage"
         managed_disk_type = "Standard_LRS"
     }
     os_profile {
-        computer_name  = "vm01-public"
+        computer_name  = "vm02-public"
         admin_username = "azureuser"
         admin_password = "Password1234!"
-        custom_data    = "${base64encode(data.template_file.cloud_init.rendered)}"
+        custom_data    = <<-EOF
+         #!/bin/bash
+            sudo apt-get update
+            sudo apt-get install -y python3 python3-pip
+            pip3 install flask
+             cat << 'EOF2' > /home/ubuntu/app.py
+            from flask import Flask
+             app = Flask(__name__)
+             @app.route('/')
+             def home():
+            return "Hello, Azure from Flask!"
+             if __name__ == '__main__':
+          app.run(host='0.0.0.0', port=5000)
+          EOF2
+          nohup python3 /home/ubuntu/app.py &
+        EOF
     }
     os_profile_linux_config {
         disable_password_authentication = false

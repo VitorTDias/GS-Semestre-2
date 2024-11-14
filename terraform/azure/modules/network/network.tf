@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "rg" {
-    name     = "rg2-gs-semestre2"
-    location = "brazilsouth"
+    name     = "${var.rg_name}"
+    location = "${var.location}"
 }
 
 resource "azurerm_virtual_network" "vnet10" {

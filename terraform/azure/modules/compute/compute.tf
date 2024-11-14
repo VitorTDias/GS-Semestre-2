@@ -260,7 +260,7 @@ resource "azurerm_virtual_machine" "vm04_public" {
 }
 
 
-/// security group
+///// security group
 
 resource "azurerm_network_security_group" "nsgvnet10" {
     name                = "nsgvnet10"

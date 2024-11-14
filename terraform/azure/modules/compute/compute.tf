@@ -60,7 +60,7 @@ resource "azurerm_virtual_machine" "vm01_public" {
         version   = "latest"
     }
     storage_os_disk {
-        name              = "vm02-os-disk-public"
+        name              = "vm01-os-disk-public"
         create_option     = "FromImage"
         managed_disk_type = "Standard_LRS"
     }
@@ -121,11 +121,13 @@ resource "azurerm_network_interface" "vm02_nic_public" {
 
 resource "azurerm_virtual_machine" "vm02_public" {
     name                          = "vm02-public"
-    location            = "${var.location}"
-    resource_group_name = "${var.rg_name}"
-    network_interface_ids         = [azurerm_network_interface.vm02_nic_public.id]
-    vm_size                       = "Standard_D2s_v3"
-    delete_os_disk_on_termination = true
+    location                         = "${var.location}"
+    resource_group_name              = "${var.rg_name}"
+    network_interface_ids            = [azurerm_network_interface.vm02_nic_public.id]
+    availability_set_id              = azurerm_availability_set.as_public.id
+    vm_size                          = "Standard_D2s_v3"
+    delete_os_disk_on_termination    = true
+    delete_data_disks_on_termination = true
     storage_image_reference {
         publisher = "Canonical"
         offer     = "0001-com-ubuntu-server-jammy"
@@ -133,7 +135,7 @@ resource "azurerm_virtual_machine" "vm02_public" {
         version   = "latest"
     }
     storage_os_disk {
-        name              = "vm02-os-disk-public"
+        name              = "vm01-os-disk-public"
         create_option     = "FromImage"
         managed_disk_type = "Standard_LRS"
     }

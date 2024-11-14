@@ -106,16 +106,11 @@ resource "azurerm_network_interface" "vm02_nic_public" {
      name                             = "vm02-public"
     location                         = "${var.location}"
     resource_group_name              = "${var.rg_name}"
-    network_interface_ids            = [azurerm_network_interface.vm02_nic_public.id]
-    availability_set_id              = azurerm_availability_set.as_public.id
-    vm_size                          = "Standard_D2s_v3"
-    delete_os_disk_on_termination    = true
-    delete_data_disks_on_termination = true
-    storage_image_reference {
-        publisher = "Canonical"
-        offer     = "0001-com-ubuntu-server-jammy"
-        sku       = "22_04-lts"
-        version   = "latest"
+     ip_configuration {
+        name                          = "vm02-ipconfig-public"
+        subnet_id                     = "${var.subnet_vnet10b}"
+        private_ip_address_allocation = "Dynamic"
+        public_ip_address_id          = azurerm_public_ip.vm01_pip_public.id
     }
 }
 

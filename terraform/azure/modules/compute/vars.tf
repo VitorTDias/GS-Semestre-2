@@ -10,6 +10,6 @@ variable "location" {
 
 variable "vnet10" {}
 
-variable "subnet_vnet10a_id"{}
+variable "subnet_vnet10a"{}
 
-variable "subnet_vnet10b_id"{}
+variable "subnet_vnet10b"{}

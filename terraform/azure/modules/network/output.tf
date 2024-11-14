@@ -8,9 +8,13 @@ output "subnet_vnet10b" {
 }
 
 output "rg_name" {
- value = azurerm_resource_group.rg_name
+ value = "${azurerm_resource_group.subnet_vnet10a.id}"
 }
 
 output "location" {
- value = azurerm_resource_group.location
+ value = azurerm_resource_group.rg.location
+}
+
+output "name" {
+ value = azurerm_resource_group.rg.name
 }
